@@ -26,11 +26,6 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 // 啟用樣版引擎 handlebars
 app.set('view engine', 'handlebars')
 
-
-app.get('/', (req, res) => {
-  res.render('index')
-})
-
 // 設定首頁路由
 app.get('/', (req, res) => {
   ShortURL.find() // 取出 Shorten URL model 裡的所有資料
