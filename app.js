@@ -38,6 +38,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // 設定靜態檔案
 app.use(express.static('public'))
 
+// 設定首頁路由
+app.get('/', (req, res) => {
+  res.render('index')
+})
+
 // 設定 port 3000
 app.listen(PORT, () => {
   console.log(`App is running on http://${host}:${PORT}`)
