@@ -43,6 +43,27 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+// 新增資料 create 路由，新增完資料後將資料送給資料庫
+app.post('/', (req, res) => {
+  const originURL = req.body.originURL
+  const charNumberGroup = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  let randomValue = ''
+
+  for (let i = 0; i < 5; i++) {
+    let randomNumber = Math.ceil(Math.random() * (charNumberGroup.length - 1))
+    randomValue += charNumberGroup[randomNumber]
+  }
+
+  ShortURL.findOne({ originURL })
+    .then(data => 
+      data ? data : ShortURL.create({ originURL, shortURL: randomValue }) // 存入資料庫
+    )
+    .then(data => {
+      res.render('index', { originURL, shortURL: data.shortURL }) // 新增完成後導回首頁
+    })
+    .catch(error => console.log(error))
+})
+
 // 設定 port 3000
 app.listen(PORT, () => {
   console.log(`App is running on http://${host}:${PORT}`)
