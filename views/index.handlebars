@@ -1,8 +1,24 @@
-<h1>短網址 test </h1>
-<ul>
-  {{#each shortURLs }}
-    <li>
-      {{ this.url }}
-    </li>
-  {{/each}}
-</ul>
+
+<main class="container d-flex flex-column">
+  <h1>URL Shortener</h1>
+  <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="copy link image" >
+
+  {{#if shortURL }}
+    <div class="shortURL">
+      <h1>Sucess! Please use this link:</h1>
+      <a href="{{ this.shortURL }}" class="short-URL">http://localhost:3000/{{ this.shortURL }}</a> <br>
+      <div class="copy-link-container">
+        <button type="button" class="btn btn-primary copy-link">拷貝連結</button>
+      </div>
+     
+    </div>
+  {{else}}
+    <form action="/" method="POST">
+      <input type="text" class="origin-URL" placeholder="Input URL here" name="originURL" required />
+      <br>
+      <button type="submit" class="btn btn-outline-primary transform-short-URL">Shorten</button>
+    </form>
+  {{/if}}
+
+  </ul>
+</main>

@@ -1,0 +1,33 @@
+.container h1 {
+  margin: 5px auto;
+}
+
+.container img {
+  margin: 5px auto;
+  width: 50%;
+}
+
+.origin-URL {
+  margin: 5px auto;
+  width: 100%;
+  border-radius: 2px;
+  border: 0px;
+  background-color: rgb(228, 228, 228);
+  font-size: 25px;
+}
+
+.transform-short-URL {
+  display: flex;
+  flex-direction: column;
+  margin: 5px auto;
+}
+
+.short-URL {
+  font-size: 25px;
+}
+
+.copy-link-container {
+  margin: 5px auto;
+  text-align: center;
+}
+
