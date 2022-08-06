@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-// 新增資料 create 路由，新增完資料後將資料送給資料庫
+// 新增資料: 新增完資料後將資料送給資料庫
 app.post('/', (req, res) => {
   const originURL = req.body.originURL
   const charNumberGroup = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -62,6 +62,15 @@ app.post('/', (req, res) => {
       res.render('index', { originURL, shortURL: data.shortURL }) // 新增完成後導回首頁
     })
     .catch(error => console.log(error))
+})
+
+// 將短網址指向原網址
+app.get(`/:shortURL`, (req, res) => {
+  const shortURL = req.params.shortURL
+
+  ShortURL.findOne({ shortURL })
+  .then(data => res.redirect(data.originURL))
+  .catch((error) => console.log(error))
 })
 
 // 設定 port 3000
