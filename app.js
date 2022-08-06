@@ -32,6 +32,12 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 // 啟用樣版引擎 handlebars
 app.set('view engine', 'handlebars')
 
+// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// 設定靜態檔案
+app.use(express.static('public'))
+
 // 設定 port 3000
 app.listen(PORT, () => {
   console.log(`App is running on http://${host}:${PORT}`)
