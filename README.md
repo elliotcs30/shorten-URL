@@ -7,20 +7,30 @@
 
 ## 開始使用
 1.確認已安裝Node.js  
+
 2.將本專案clone進本地端
+
 3.安裝套件
 ```js
-npm i express@4.17.1 express-handlebars@3.0.0 mongoose@6.0.4 
+npm i express@4.17.1 express-handlebars@4.0.2 mongoose@6.0.4 
 ```
-4.執行程式
+
+4. 資料庫連線設定，在 Terminal 輸入以下內容並替換帳號、密碼
+```js
+export MONGODB_URI="mongodb+srv://<your account>:<your password>@cluster0.ayhtm.mongodb.net/shorten-url?retryWrites=true&w=majority"
+```
+
+5.執行程式
 ```js
 npm run start
 ```
-5.當cmd出現以下這行表示啟動成功
+
+6.當cmd出現以下這行表示啟動成功
 ```js
 App is running on http://localhost:3000
+
 ```
-6.接著在瀏覽器輸入
+7.接著在瀏覽器輸入
 ```js
 http://localhost:3000
 ```
