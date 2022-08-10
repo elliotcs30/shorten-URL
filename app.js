@@ -48,6 +48,14 @@ app.post('/', (req, res) => {
   const originURL = req.body.originURL
   const charNumberGroup = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
   let randomValue = ''
+  const error = '請輸入正確網址'
+
+  // 判斷是否為正確網址
+  if (!originURL.match(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+)) {
+    res.render('index', { error })
+    return
+  }
 
   for (let i = 0; i < 5; i++) {
     let randomNumber = Math.ceil(Math.random() * (charNumberGroup.length - 1))
